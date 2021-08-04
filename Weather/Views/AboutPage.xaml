@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Weather.Views.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Weather.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="#07082C">
+    <Grid Padding="10" HorizontalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            FontFamily="Poppins-Medium"
+            FontSize="22"
+            HorizontalOptions="Center">
+            Forecast Report
+        </Label>
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            FontFamily="Poppins-Light"
+            FontSize="16"
+            VerticalOptions="Center">
+            Your Location
+        </Label>
+        <Label
+            Grid.Row="1"
+            Grid.Column="2"
+            Padding="0,0,10,0"
+            FontFamily="Poppins-Light"
+            FontSize="12"
+            HorizontalOptions="End"
+            Opacity="0.4"
+            VerticalOptions="Center">
+            Aug 29 2021
+        </Label>
+
+        <Frame
+            Grid.Row="2"
+            Grid.Column="0"
+            BackgroundColor="#1C85E6"
+            CornerRadius="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    Source="rain.png" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontFamily="Poppins-light"
+                    FontSize="14"
+                    HorizontalOptions="End"
+                    Text="14.00"
+                    VerticalOptions="End" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontFamily="Poppins-Bold"
+                    FontSize="18"
+                    HorizontalTextAlignment="End"
+                    Text="22°C" />
+            </Grid>
+
+
+        </Frame>
+        <Frame
+            Grid.Row="2"
+            Grid.Column="1"
+            BackgroundColor="#15153E"
+            CornerRadius="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    Source="cloud.png" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontFamily="Poppins-light"
+                    FontSize="14"
+                    HorizontalOptions="End"
+                    Text="15.00"
+                    VerticalOptions="End" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontFamily="Poppins-Bold"
+                    FontSize="18"
+                    HorizontalTextAlignment="End"
+                    Text="20°C" />
+            </Grid>
+        </Frame>
+
+
+        <Frame
+            Grid.Row="2"
+            Grid.Column="2"
+            BackgroundColor="#15153E"
+            CornerRadius="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    Source="full_sun.png" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontFamily="Poppins-light"
+                    FontSize="14"
+                    HorizontalOptions="End"
+                    Text="25.00"
+                    VerticalOptions="End" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontFamily="Poppins-Bold"
+                    FontSize="18"
+                    HorizontalTextAlignment="End"
+                    Text="30°C" />
+            </Grid>
+        </Frame>
+
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Padding="0,10,0,0"
+            FontFamily="Poppins-Light"
+            FontSize="18">
+            Cities Forecast
+        </Label>
+
+        <Image
+            Grid.Row="3"
+            Grid.Column="2"
+            Margin="15"
+            HorizontalOptions="End"
+            Opacity="0.6"
+            Source="cal.png" />
+
+
+        <CollectionView
+            x:Name="CollectionView"
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="Transparent" CornerRadius="200">
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                        </Frame.GestureRecognizers>
+                        <Grid
+                            x:Name="Grid"
+                            Padding="20,0,20,0"
+                            BackgroundColor="#15153E"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontFamily="Poppins-Medium"
+                                Text="{Binding .CityName}"
+                                VerticalOptions="End" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontFamily="Poppins-Bold"
+                                Text="{Binding .CountryName}"
+                                VerticalOptions="Start" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                FontSize="30"
+                                HorizontalOptions="Center"
+                                Text="{Binding .CurrentTemp}"
+                                VerticalOptions="Center" />
+                            <Image
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="2"
+                                Margin="10"
+                                Source="{Binding .ImageUrl}"
+                                VerticalOptions="Center" />
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+
+    </Grid>
+
+</ContentPage>
