@@ -75,7 +75,6 @@ namespace Weather.ViewModels
                 {
                     Console.WriteLine("Clicked" + SelectedCity.CityName);
                     var data = JsonConvert.SerializeObject(SelectedCity);
-                    //  await Browser.OpenAsync("https://aka.ms/xamarin-quickstart");
                     await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Content={data}");
                 }           
 );
