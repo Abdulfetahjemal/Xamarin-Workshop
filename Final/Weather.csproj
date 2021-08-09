@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="NewFolder\poppins_black.ttf" />
+    <None Remove="NewFolder\poppins_bold.ttf" />
+    <None Remove="NewFolder\poppins_light.ttf" />
+    <None Remove="NewFolder\poppins_medium.ttf" />
+    <None Remove="NewFolder\poppins_regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="NewFolder\poppins_black.ttf" />
+    <EmbeddedResource Include="NewFolder\poppins_bold.ttf" />
+    <EmbeddedResource Include="NewFolder\poppins_light.ttf" />
+    <EmbeddedResource Include="NewFolder\poppins_medium.ttf" />
+    <EmbeddedResource Include="NewFolder\poppins_regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\CityListPage.xaml.cs">
+      <DependentUpon>CityListPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\DetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

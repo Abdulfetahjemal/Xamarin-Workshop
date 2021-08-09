@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Weather.Views.DetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#07082C">
+    <ContentPage.Content>
+        <Grid Margin="20" HorizontalOptions="FillAndExpand">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                FontFamily="Poppins-Medium"
+                FontSize="26"
+                HorizontalOptions="Center"
+                Text="{Binding CurrentCity.CityName}" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                FontFamily="Poppins-Light"
+                FontSize="14"
+                HorizontalOptions="Center"
+                Opacity="0.6"
+                Text="August 4 2021" />
+
+            <Image
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="30"
+                Source="rain.png" />
+
+            <StackLayout Grid.Row="3" Grid.Column="0">
+                <Label
+                    FontFamily="Poppins-Light"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Opacity="0.6"
+                    Text="Temp" />
+                <Label
+                    FontFamily="Poppins-Bold"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Text="{Binding CurrentCity.CurrentTemp}" />
+            </StackLayout>
+            <StackLayout Grid.Row="3" Grid.Column="1">
+                <Label
+                    FontFamily="Poppins-Light"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Opacity="0.6"
+                    Text="Humidity" />
+                <Label
+                    FontFamily="Poppins-Bold"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Text="75%" />
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="3" Grid.Column="2">
+                <Label
+                    FontFamily="Poppins-Light"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Opacity="0.6"
+                    Text="Wind" />
+                <Label
+                    FontFamily="Poppins-Bold"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Text="10 kmph" />
+            </StackLayout>
+
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                FontFamily="Poppins-Medium"
+                FontSize="16"
+                Text="Today" />
+            <Label
+                Grid.Row="4"
+                Grid.Column="2"
+                FontFamily="Poppins-Light"
+                FontSize="12"
+                HorizontalTextAlignment="End"
+                Text="View Report"
+                TextColor="DodgerBlue" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
